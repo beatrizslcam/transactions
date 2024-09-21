@@ -16,6 +16,13 @@ type Account struct {
 
 var account_cache = make(map[string]Account)
 
+
+type Accounts interface {
+    CreateAccount(name string, cpf string) Account
+    GetAccount( cpf string) Account
+}
+
+
 func CreateAccount(name string, cpf string) Account{
 	if _, ok := account_cache[cpf]; ok {
 		fmt.Print("Account already exists")
